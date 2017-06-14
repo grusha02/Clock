@@ -1,3 +1,3 @@
 # Clock
 
-A basic clock using javascript 
+A basic clock using javascript and css 
