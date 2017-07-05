@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8"/>
+    <title>
+       clock
+     </title>
+</head>
+<body>
+    <style>
+       body{
+       background: black;}
+       .clock{
+       width:200px;
+       height: 200px;
+       border:9px solid white;
+       border-radius: 250px;
+       margin-top:200px;
+       margin-left:650px;
+       color:white;
+       }
+        .minhand{
+       position:absolute;
+       margin-top:100px;
+       margin-left:10px;
+       width:90px;
+       height:5px;
+       background-color: white;
+       transform-origin: 100%;
+       transform:(90deg);
+       transition-timing-function:ease-in-out;
+       }
+      .sechand{
+       position:absolute;
+       margin-left:10px;
+       margin-top:100px;
+       width:90px;
+       height:2px;
+       background-color:white;
+       transform:(90deg);
+       transform-origin: 100%;
+       transition-timing-function:ease-in-out;
+       }
+       .hourhand{
+       margin-left:25px;
+       margin-top:100px;
+       width:75px;
+       height:7px;
+       background-color: white;
+       transform-origin:100%;
+       transform:(90deg);
+       }
+
+    </style>
+  <div class="clock">
+  <div class="minhand"></div>
+  <div class="sechand"></div>
+  <div class="hourhand"></div>
+</div>
+   <script>
+          const secHand=document.querySelector('.sechand');
+          const minHand=document.querySelector('.minhand');
+          const hourHand=document.querySelector('.hourhand');
+          function setDate(){
+          const now= new Date();
+          const seconds=now.getSeconds();
+          const mins=now.getMinutes();
+          const hours=now.getHours();
+          const secondDegrees= seconds*6+90;
+          const minutesDegrees=(((mins*60)+seconds)/10)+90;
+          const hoursDegrees=(((hours*3600)+(mins*60)+seconds)/120)+90;
+          minHand.style.transform=`rotate(${minutesDegrees}deg)`;
+          secHand.style.transform=`rotate(${secondDegrees}deg)`;
+          hourHand.style.transform=`rotate(${hoursDegrees}deg)`;
+          }
+          setInterval(setDate,1000);
+    </script>
+</body>
+</html>
